@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export const FeaturedReviews = ({ reviews }) => {
   const indexArr = [];
   for (let i = 0; i < 5; i++) {
@@ -6,7 +7,6 @@ export const FeaturedReviews = ({ reviews }) => {
       indexArr.push(randomIndex);
       i += 1;
     }
-    console.log(indexArr);
   }
 
   return reviews.length > 0 ? (
@@ -15,21 +15,30 @@ export const FeaturedReviews = ({ reviews }) => {
         <h2>Featured Reviews</h2>
       </header>
       <main>
-        <ul>
+        <ul className="reviews">
           {indexArr.map((index) => {
             return (
-              <li key={`featured-${reviews[index].review_id}`}>
+              <li
+                key={`featured-${reviews[index].review_id}`}
+                className="review-card"
+              >
                 <h3>{reviews[index].title}</h3>
                 <img
                   src={reviews[index].review_img_url}
                   alt={reviews[index].title}
+                  className="review-img"
                 />
-                <p>Review: {reviews[index].review_body}</p>
+                <p className="review-body">
+                  Review: {reviews[index].review_body}
+                </p>
               </li>
             );
           })}
         </ul>
       </main>
+      <Link to="/reviews" className="link-to-page">
+        See All Reviews
+      </Link>
     </section>
   ) : (
     <p></p>
