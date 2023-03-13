@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 } */
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1rem;
+}
+
+.reviews {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 10px 20px;
+}
+
+.review-card {
+  border: 1.5px solid black;
+  margin-bottom: 20px;
+  background-color: grey;
+  padding: 20px 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 12rem;
+  border-radius: 50px;
+}
+
+.review-img {
+  width: 12rem;
+}
+
+.review-body {
+  font-size: 0.7rem;
+  text-align: justify;
+}
+
+.link-to-page {
+  padding: 30px;
+}
