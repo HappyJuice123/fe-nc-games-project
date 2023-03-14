@@ -10,16 +10,8 @@ export const getReviews = () => {
   });
 };
 
-// CHANGE reviewsApi to gamesApi
-
-export const getCommentsByReviewId = (review_id) => {
-  return gamesApi.get(`reviews/${review_id}`).then((result) => {
-    return result.data;
-  });
-};
-
 export const getReviewById = (review_id) => {
-  return reviewsApi.get(`/reviews/${review_id}`).then((result) => {
+  return gamesApi.get(`/reviews/${review_id}`).then((result) => {
     return result.data;
   });
 };
@@ -37,4 +29,38 @@ export const featuredReviewsIndex = (reviews) => {
     }
   }
   return indexArr;
+};
+
+export const getCommentsByReviewId = (review_id) => {
+  return gamesApi.get(`reviews/${review_id}/comments`).then((result) => {
+    return result.data;
+  });
+};
+
+export const getUsers = () => {
+  return gamesApi.get("/users").then((result) => {
+    return result.data;
+  });
+};
+
+export const avatarUrl = (users, comment) => {
+  if (users && comment) {
+    const userAvatar = users.find((user) => {
+      return user.username === comment.author;
+    });
+    if (userAvatar) {
+      return userAvatar.avatar_url;
+    }
+  }
+};
+
+export const commentAuthor = (users, comment) => {
+  if (users && comment) {
+    const authorArr = users.find((user) => {
+      return user.username === comment.author;
+    });
+    if (authorArr) {
+      return authorArr.name;
+    }
+  }
 };

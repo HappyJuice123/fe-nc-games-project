@@ -75,11 +75,22 @@ h2 {
   text-decoration: none;
 }
 
+/* 
+Comments
+*/
+
+.comments-area {
+  background-color: #858178;
+}
+
+.comments-section {
+  list-style: none;
+}
 @media only screen and (max-width: 600px) {
   .review-card {
     border: 1.5px solid black;
     margin-bottom: 20px;
-    background-color: grey;
+    background-color: #858178;
     padding: 20px 30px;
     width: 10rem;
     border-radius: 50px;
@@ -148,6 +159,37 @@ h2 {
     padding: 10px 30px;
     margin-top: 20px;
   }
+
+  .avatar-img {
+    width: 2rem;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .comments-area {
+    background-color: #858178;
+    border-radius: 20px;
+  }
+
+  .comments-section {
+    padding: 10px;
+    /* border: 2px red solid; */
+    text-align: left;
+    align-items: left;
+    margin-left: -40px;
+    width: auto;
+    margin-bottom: 10px;
+  }
+
+  .comment-votes {
+    margin-top: -10px;
+    font-size: 0.8rem;
+  }
+
+  .comment-time {
+    margin-top: -10px;
+    font-size: 0.8rem;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -161,31 +203,96 @@ h2 {
     height: 400px;
   }
   .single-review {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-areas:
+      "link link link link link link link"
+      "img img img img img text text"
+      "img img img img img text text"
+      "img img img img img text text"
+      ". comments comments comments comments comments ."
+      ". comments comments comments comments comments ."
+      ". comments comments comments comments comments ."
+      ". comments comments comments comments comments ."
+      ". comments comments comments comments comments .";
     margin: 20px;
+  }
+
+  .link-to-reviews {
+    grid-area: link;
   }
 
   .single-review__img-section {
     padding: 20px;
+    grid-area: img;
+    margin-bottom: 50px;
   }
 
-  #single-review__img {
-    border: 2px solid black;
-    width: 150rem;
-    height: auto;
-    max-width: 100%;
-    border-radius: 80px;
+  .comments {
+    grid-area: comments;
   }
 
   .single-review__text-section {
+    grid-area: text;
     text-align: justify;
     padding: 50px 50px;
     margin-left: 10px;
     border-radius: 80px;
-    width: 80rem;
     height: auto;
     max-width: 100%;
     background-color: #858178;
+    margin-bottom: 50px;
+  }
+
+  .comments-section {
+    text-align: left;
+  }
+
+  #single-review__img {
+    border: 2px solid black;
+    width: 500rem;
+    height: auto;
+    max-width: 100%;
+    border-radius: 80px;
+  }
+
+  #single-review__votes {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  #single-review__comment-count {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  #single-review__created {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  .comments-area {
+    border-radius: 20px;
+  }
+
+  .avatar-img {
+    width: 3rem;
+  }
+
+  .comments-section {
+    margin-bottom: 30px;
+  }
+
+  .comment-votes {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  .comment-time {
+    font-size: 0.8rem;
+    margin-top: -10px;
+  }
+
+  .comments-area {
+    padding: 20px;
   }
 }
