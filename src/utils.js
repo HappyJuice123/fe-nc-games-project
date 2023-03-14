@@ -30,3 +30,12 @@ export const featuredReviewsIndex = (reviews) => {
   }
   return indexArr;
 };
+
+export const increaseVote = (review_id) => {
+  return gamesApi
+    .patch(`/reviews/review_id`, { inc_votes: 1 })
+    .then((result) => {
+      console.log(result.data);
+      return result.data;
+    });
+};
