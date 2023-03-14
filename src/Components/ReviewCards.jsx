@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-export const ReviewCard = ({ reviews, isLoading }) => {
-  return !isLoading ? (
+export const ReviewCards = ({ reviews, isReviewsLoading }) => {
+  return !isReviewsLoading ? (
     <section>
       <ul className="reviews">
         {reviews.map((review) => {
@@ -9,7 +9,7 @@ export const ReviewCard = ({ reviews, isLoading }) => {
               <section>
                 <Link
                   to={`/reviews/${review.review_id}`}
-                  id="review-card__link"
+                  className="review-card__link"
                 >
                   <h3 className="review-title">{review.title}</h3>
                   <img

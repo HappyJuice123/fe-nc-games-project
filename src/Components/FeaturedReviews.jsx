@@ -1,13 +1,7 @@
 import { Link } from "react-router-dom";
+import { featuredReviewsIndex } from "../utils";
 export const FeaturedReviews = ({ reviews }) => {
-  const indexArr = [];
-  for (let i = 0; i < 5; i++) {
-    const randomIndex = Math.floor(Math.random() * reviews.length);
-    if (indexArr.indexOf(randomIndex) === -1) {
-      indexArr.push(randomIndex);
-      i += 1;
-    }
-  }
+  const indexArr = featuredReviewsIndex(reviews);
 
   return reviews.length > 0 ? (
     <section>
@@ -31,7 +25,7 @@ export const FeaturedReviews = ({ reviews }) => {
                 <section>
                   <Link
                     to={`/reviews/${reviews[index].review_id}`}
-                    id="review-title"
+                    className="review-title"
                   >
                     <h3>{reviews[index].title}</h3>
                     <img

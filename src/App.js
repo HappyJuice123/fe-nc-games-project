@@ -9,12 +9,12 @@ import { SingleReview } from "./Components/SingleReview";
 
 function App() {
   const [reviews, setReviews] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isReviewsLoading, setIsReviewsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsReviewsLoading(true);
     getReviews().then((data) => {
-      setIsLoading(false);
+      setIsReviewsLoading(false);
       const reviewsData = data.reviews;
       setReviews(reviewsData);
     });
@@ -27,7 +27,9 @@ function App() {
         <Route path="/" element={<FeaturedReviews reviews={reviews} />} />
         <Route
           path="/reviews"
-          element={<Reviews reviews={reviews} isLoading={isLoading} />}
+          element={
+            <Reviews reviews={reviews} isReviewsLoading={isReviewsLoading} />
+          }
         />
         <Route path="/reviews/:review_id" element={<SingleReview />} />
       </Routes>

@@ -1,13 +1,13 @@
-import { ReviewCard } from "./ReviewCard";
+import { ReviewCards } from "./ReviewCards";
 
-export const Reviews = ({ reviews, isLoading }) => {
+export const Reviews = ({ reviews, isReviewsLoading }) => {
   return (
     <main>
       <header>
         <h2>Reviews</h2>
       </header>
       <section>
-        <ReviewCard reviews={reviews} isLoading={isLoading} />
+        <ReviewCards reviews={reviews} isReviewsLoading={isReviewsLoading} />
       </section>
     </main>
   );

@@ -26,7 +26,7 @@ export const SingleReview = () => {
     reviewExists ? (
       <main className="single-review">
         <section>
-          <Link to="/reviews" id="single-review-to-reviews">
+          <Link to="/reviews" className="single-review-to-reviews">
             Go Back to Reviews
           </Link>
         </section>
