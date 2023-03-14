@@ -15,6 +15,12 @@ export const FeaturedReviews = ({ reviews }) => {
         <h2>Featured Reviews</h2>
       </header>
       <main>
+        <section>
+          <Link to="/reviews" className="link-to-page">
+            See All Reviews
+          </Link>
+        </section>
+
         <ul className="reviews">
           {indexArr.map((index) => {
             return (
@@ -22,12 +28,19 @@ export const FeaturedReviews = ({ reviews }) => {
                 key={`featured-${reviews[index].review_id}`}
                 className="review-card"
               >
-                <h3>{reviews[index].title}</h3>
-                <img
-                  src={reviews[index].review_img_url}
-                  alt={reviews[index].title}
-                  className="review-img"
-                />
+                <section>
+                  <Link
+                    to={`/reviews/${reviews[index].review_id}`}
+                    id="review-title"
+                  >
+                    <h3>{reviews[index].title}</h3>
+                    <img
+                      src={reviews[index].review_img_url}
+                      alt={reviews[index].title}
+                      className="review-img"
+                    />
+                  </Link>
+                </section>
                 <p className="review-body">
                   Review: {reviews[index].review_body}
                 </p>
@@ -36,9 +49,11 @@ export const FeaturedReviews = ({ reviews }) => {
           })}
         </ul>
       </main>
-      <Link to="/reviews" className="link-to-page">
-        See All Reviews
-      </Link>
+      <section>
+        <Link to="/reviews" className="link-to-page">
+          See All Reviews
+        </Link>
+      </section>
     </section>
   ) : (
     <p></p>
