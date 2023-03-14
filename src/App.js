@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Header } from "./Components/Header";
 import { Reviews } from "./Components/Reviews";
 import { useEffect, useState } from "react";
-import { getReviews } from "./utils";
+import { getReviews } from "./api";
 import { FeaturedReviews } from "./Components/FeaturedReviews";
 import { SingleReview } from "./Components/SingleReview";
 
