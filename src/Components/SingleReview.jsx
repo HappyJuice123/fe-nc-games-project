@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getReviewById } from "../utils";
+import { getReviewById, patchReview } from "../utils";
 
 export const SingleReview = () => {
   const { review_id } = useParams();
@@ -21,6 +21,23 @@ export const SingleReview = () => {
         setReviewExists(false);
       });
   }, [review_id]);
+
+  const upVote = () => {
+    setSingleReview((currentSingleReview) => {
+      return {
+        ...currentSingleReview,
+        votes: currentSingleReview.votes + 1,
+      };
+    });
+    patchReview(review_id).catch(() => {
+      setSingleReview((currentSingleReview) => {
+        return {
+          ...currentSingleReview,
+          votes: currentSingleReview.votes - 1,
+        };
+      });
+    });
+  };
 
   return !isLoading ? (
     reviewExists ? (
@@ -49,7 +66,11 @@ export const SingleReview = () => {
             <br></br>
             {singleReview.review_body}
           </p>
-          <p id="single-review__votes">Votes: {singleReview.votes}</p>
+          <p id="single-review__votes">
+            <button type="button" onClick={upVote}>
+              Votes: {singleReview.votes}
+            </button>
+          </p>
           <p id="single-review__comment-count">
             {singleReview.comment_count} Comments
           </p>

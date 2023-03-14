@@ -1,17 +1,17 @@
 import axios from "axios";
 
-const reviewsApi = axios.create({
+const gamesApi = axios.create({
   baseURL: "https://jasons-backend-games-project.onrender.com/api",
 });
 
 export const getReviews = () => {
-  return reviewsApi.get("/reviews").then((result) => {
+  return gamesApi.get("/reviews").then((result) => {
     return result.data;
   });
 };
 
 export const getReviewById = (review_id) => {
-  return reviewsApi.get(`/reviews/${review_id}`).then((result) => {
+  return gamesApi.get(`/reviews/${review_id}`).then((result) => {
     return result.data;
   });
 };
@@ -31,11 +31,10 @@ export const featuredReviewsIndex = (reviews) => {
   return indexArr;
 };
 
-export const increaseVote = (review_id) => {
+export const patchReview = (review_id) => {
   return gamesApi
-    .patch(`/reviews/review_id`, { inc_votes: 1 })
+    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
     .then((result) => {
-      console.log(result.data);
       return result.data;
     });
 };
