@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getReviewById, patchReview } from "../utils";
+import { getReviewById, patchReview } from "../api";
+import { Comments } from "./Comments";
 
 export const SingleReview = () => {
   const { review_id } = useParams();
@@ -42,7 +43,7 @@ export const SingleReview = () => {
   return !isLoading ? (
     reviewExists ? (
       <main className="single-review">
-        <section>
+        <section className="link-to-reviews">
           <Link to="/reviews" className="single-review-to-reviews">
             Go Back to Reviews
           </Link>
@@ -80,6 +81,14 @@ export const SingleReview = () => {
             </p>
           ) : (
             <p>{""}</p>
+          )}
+        </section>
+
+        <section className="comments">
+          {singleReview.comment_count === 0 ? (
+            <p>No Comments</p>
+          ) : (
+            <Comments review_id={review_id} singleReview={singleReview} />
           )}
         </section>
       </main>
