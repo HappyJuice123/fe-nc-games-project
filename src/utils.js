@@ -64,3 +64,18 @@ export const commentAuthor = (users, comment) => {
     }
   }
 };
+
+// export const patchReview = (review_id) => {
+//   return gamesApi
+//     .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+//     .then((result) => {
+//       console.log(result.data);
+//       return result.data;
+//     });
+// };
+
+// insert into singleReview
+
+// patchReview().then((review)=>{
+//   if(review.)
+// })
