@@ -28,10 +28,8 @@ export const getUsers = () => {
   });
 };
 
-export const patchReview = (review_id) => {
-  return gamesApi
-    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
-    .then((result) => {
-      return result.data;
-    });
+export const patchReview = (review_id, voteUpdate) => {
+  return gamesApi.patch(`/reviews/${review_id}`, voteUpdate).then((result) => {
+    return result.data;
+  });
 };
