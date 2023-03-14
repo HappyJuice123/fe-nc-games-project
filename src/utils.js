@@ -18,13 +18,12 @@ export const getReviewById = (review_id) => {
 
 export const featuredReviewsIndex = (reviews) => {
   const indexArr = [];
-
-  for (let i = 0; indexArr.length < 3; i++) {
-    const randomIndex = Math.floor(Math.random() * reviews.length);
-    if (reviews) {
+  if (reviews) {
+    for (let i = 0; i < 3; i += 0) {
+      const randomIndex = Math.floor(Math.random() * reviews.length);
       if (indexArr.indexOf(randomIndex) === -1) {
+        i++;
         indexArr.push(randomIndex);
-        i += 1;
       }
     }
   }
