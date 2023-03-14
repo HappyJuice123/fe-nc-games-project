@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getReviewById } from "../utils";
+import { getReviewById } from "../api";
 import { Comments } from "./Comments";
 
 export const SingleReview = () => {
@@ -62,8 +62,13 @@ export const SingleReview = () => {
             <p>{""}</p>
           )}
         </section>
+
         <section className="comments">
-          <Comments review_id={review_id} />
+          {singleReview.comment_count === 0 ? (
+            <p>No Comments</p>
+          ) : (
+            <Comments review_id={review_id} singleReview={singleReview} />
+          )}
         </section>
       </main>
     ) : (
