@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getReviewById } from "../api";
 import { Comments } from "./Comments";
+import { Voting } from "./Voting";
 
 export const SingleReview = () => {
   const { review_id } = useParams();
@@ -50,7 +51,11 @@ export const SingleReview = () => {
             <br></br>
             {singleReview.review_body}
           </p>
-          <p id="single-review__votes">Votes: {singleReview.votes}</p>
+          <Voting
+            setSingleReview={setSingleReview}
+            singleReview={singleReview}
+            review_id={review_id}
+          />
           <p id="single-review__comment-count">
             {singleReview.comment_count} Comments
           </p>
