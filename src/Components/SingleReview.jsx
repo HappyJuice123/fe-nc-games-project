@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getReviewById, patchReview } from "../api";
+import { getReviewById } from "../api";
 import { Comments } from "./Comments";
+import { Voting } from "./Voting";
 
 export const SingleReview = () => {
   const { review_id } = useParams();
@@ -9,7 +10,6 @@ export const SingleReview = () => {
   const [singleReview, setSingleReview] = useState({});
   const [reviewExists, setReviewExists] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
-  const [err, setErr] = useState(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -23,49 +23,6 @@ export const SingleReview = () => {
         setReviewExists(false);
       });
   }, [review_id]);
-
-  const upVote = () => {
-    setErr(null);
-    const voteUpdate = { inc_votes: 1 };
-    setSingleReview((currentSingleReview) => {
-      return {
-        ...currentSingleReview,
-        votes: currentSingleReview.votes + 1,
-      };
-    });
-    patchReview(review_id, voteUpdate).catch(() => {
-      setErr("Something went wrong, please try again.");
-      setSingleReview((currentSingleReview) => {
-        return {
-          ...currentSingleReview,
-          votes: currentSingleReview.votes - 1,
-        };
-      });
-    });
-  };
-
-  const downVote = () => {
-    setErr(null);
-    if (singleReview.votes > 0) {
-      const voteUpdate = { inc_votes: -1 };
-      setSingleReview((currentSingleReview) => {
-        return {
-          ...currentSingleReview,
-          votes: currentSingleReview.votes - 1,
-        };
-      });
-
-      patchReview(review_id, voteUpdate).catch((err) => {
-        setErr("Something went wrong, please try again.");
-        setSingleReview((currentSingleReview) => {
-          return {
-            ...currentSingleReview,
-            votes: currentSingleReview.votes + 1,
-          };
-        });
-      });
-    }
-  };
 
   return !isLoading ? (
     reviewExists ? (
@@ -94,17 +51,11 @@ export const SingleReview = () => {
             <br></br>
             {singleReview.review_body}
           </p>
-
-          <p id="single-review__votes">
-            <button type="button" onClick={upVote}>
-              Up
-            </button>
-            <button type="button" onClick={downVote}>
-              Down
-            </button>
-            Votes: {singleReview.votes}
-          </p>
-          <p>{err ? <p>{err} </p> : null}</p>
+          <Voting
+            setSingleReview={setSingleReview}
+            singleReview={singleReview}
+            review_id={review_id}
+          />
           <p id="single-review__comment-count">
             {singleReview.comment_count} Comments
           </p>
