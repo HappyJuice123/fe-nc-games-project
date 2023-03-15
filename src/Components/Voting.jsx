@@ -60,7 +60,7 @@ export const Voting = ({ setSingleReview, review_id, singleReview }) => {
         </button>
         Votes: {singleReview.votes}
       </p>
-      <p>{err ? <p>{err} </p> : null}</p>
+      <section>{err ? <p>{err} </p> : null}</section>
     </section>
   );
 };

@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { getCommentsByReviewId, getUsers } from "../api";
 
 import { avatarUrl, commentAuthor } from "../utils";
+import { CommentAdder } from "./CommentAdder";
 
-export const Comments = ({ review_id, singleReview }) => {
+export const Comments = ({ review_id, singleReview, login }) => {
   const [comments, setComments] = useState([]);
   const [users, setUsers] = useState([]);
   const [isCommentsLoading, setIsCommentsLoading] = useState(true);
@@ -25,10 +26,23 @@ export const Comments = ({ review_id, singleReview }) => {
   return !isCommentsLoading ? (
     <section className="comments-area">
       {+singleReview.comment_count === 0 ? (
-        <p>No Comments</p>
+        <section>
+          <CommentAdder
+            review_id={review_id}
+            login={login}
+            setComments={setComments}
+          />
+          <br></br>
+          No Comments
+        </section>
       ) : (
         <section className="comments-area">
           <p id="comment-title">Comments</p>
+          <CommentAdder
+            review_id={review_id}
+            login={login}
+            setComments={setComments}
+          />
           <ul>
             {comments.map((comment) => {
               return (
