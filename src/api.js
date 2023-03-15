@@ -27,3 +27,9 @@ export const getUsers = () => {
     return result.data;
   });
 };
+
+export const patchReview = (review_id, voteUpdate) => {
+  return gamesApi.patch(`/reviews/${review_id}`, voteUpdate).then((result) => {
+    return result.data;
+  });
+};
