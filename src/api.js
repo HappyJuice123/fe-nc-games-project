@@ -5,14 +5,15 @@ const gamesApi = axios.create({
 });
 
 export const getReviews = (category) => {
-  let path = "/reviews";
-  if (category && category !== "All") {
-    path += `?category=${category}`;
-  }
-
-  return gamesApi.get(path).then((result) => {
-    return result.data;
-  });
+  return gamesApi
+    .get("/reviews", {
+      params: {
+        category: category,
+      },
+    })
+    .then((result) => {
+      return result.data;
+    });
 };
 
 export const getReviewById = (review_id) => {
