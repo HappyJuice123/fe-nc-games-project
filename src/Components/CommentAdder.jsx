@@ -12,7 +12,7 @@ export const CommentAdder = ({ review_id, login, setComments }) => {
 
   const handleSubmit = (event) => {
     setIsPosting(true);
-    setNewComment("");
+
     setErr(null);
     event.preventDefault();
     const addNewComment = {
@@ -20,22 +20,28 @@ export const CommentAdder = ({ review_id, login, setComments }) => {
       body: newComment,
     };
 
-    postComment(review_id, addNewComment)
-      .then((data) => {
-        const addedComment = data.addComment;
-        setComments((currentComments) => {
+    if (newComment.length > 0) {
+      postComment(review_id, addNewComment)
+        .then((data) => {
+          setNewComment("");
+          const addedComment = data.addComment;
+          setComments((currentComments) => {
+            setIsPosting(false);
+            return [addedComment, ...currentComments];
+          });
+        })
+        .catch((err) => {
           setIsPosting(false);
-          return [addedComment, ...currentComments];
+          if (!login) {
+            setErr("Please sign in to comment.");
+          } else {
+            setErr("Something went wrong, please try again.");
+          }
         });
-      })
-      .catch((err) => {
-        setIsPosting(false);
-        if (!login) {
-          setErr("Please sign in to comment.");
-        } else {
-          setErr("Something went wrong, please try again.");
-        }
-      });
+    } else {
+      setIsPosting(false);
+      setErr("You can not post blank comments.");
+    }
   };
 
   return (
@@ -51,7 +57,7 @@ export const CommentAdder = ({ review_id, login, setComments }) => {
           value={newComment}
           id="post-comment"
         ></input>
-        <button type="button">Post</button>
+        <button type="submit">Post</button>
       </form>
       <section>{isPosting ? <p>Posting comment...</p> : null}</section>
       <section>{err ? <p>{err} </p> : null}</section>
