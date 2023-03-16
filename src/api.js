@@ -33,3 +33,11 @@ export const patchReview = (review_id, voteUpdate) => {
     return result.data;
   });
 };
+
+export const postComment = (review_id, newComment) => {
+  return gamesApi
+    .post(`/reviews/${review_id}/comments`, newComment)
+    .then((result) => {
+      return result.data;
+    });
+};

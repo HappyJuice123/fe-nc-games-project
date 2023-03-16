@@ -22,6 +22,22 @@ h1 {
   color: rgb(104, 114, 124);
 }
 
+.login {
+  text-align: right;
+  margin-right: 20px;
+  margin-top: -40px;
+}
+
+.login-text {
+  font-size: 0.7rem;
+  margin-right: 80px;
+  margin-top: 20px;
+}
+
+.login-button {
+  margin-top: -35px;
+}
+
 h2 {
   font-size: 1rem;
   text-decoration: underline;
@@ -330,8 +346,9 @@ Comments
   }
 
   .avatar-img {
-    height: 3rem;
+    height: 2rem;
     margin-right: 5px;
+    border-radius: 50%;
   }
 
   .comments-section {
