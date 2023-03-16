@@ -5,7 +5,7 @@ export const Header = ({ login, setLogin }) => {
     <header>
       <h1>
         <Link to="/" className="header">
-          Games Review
+          <img src={require("./logo.png")} alt="logo" id="logo" />
         </Link>
         <Login login={login} setLogin={setLogin} />
       </h1>
