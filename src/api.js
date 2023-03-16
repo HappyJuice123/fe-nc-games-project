@@ -4,10 +4,16 @@ const gamesApi = axios.create({
   baseURL: "https://jasons-backend-games-project.onrender.com/api",
 });
 
-export const getReviews = () => {
-  return gamesApi.get("/reviews").then((result) => {
-    return result.data;
-  });
+export const getReviews = (category) => {
+  return gamesApi
+    .get("/reviews", {
+      params: {
+        category: category,
+      },
+    })
+    .then((result) => {
+      return result.data;
+    });
 };
 
 export const getReviewById = (review_id) => {
@@ -40,4 +46,10 @@ export const postComment = (review_id, newComment) => {
     .then((result) => {
       return result.data;
     });
+};
+
+export const getCategories = () => {
+  return gamesApi.get("/categories").then((result) => {
+    return result.data;
+  });
 };
