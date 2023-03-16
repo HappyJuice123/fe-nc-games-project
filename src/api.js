@@ -4,8 +4,13 @@ const gamesApi = axios.create({
   baseURL: "https://jasons-backend-games-project.onrender.com/api",
 });
 
-export const getReviews = () => {
-  return gamesApi.get("/reviews").then((result) => {
+export const getReviews = (category) => {
+  let path = "/reviews";
+  if (category && category !== "All") {
+    path += `?category=${category}`;
+  }
+
+  return gamesApi.get(path).then((result) => {
     return result.data;
   });
 };
@@ -30,6 +35,12 @@ export const getUsers = () => {
 
 export const patchReview = (review_id, voteUpdate) => {
   return gamesApi.patch(`/reviews/${review_id}`, voteUpdate).then((result) => {
+    return result.data;
+  });
+};
+
+export const getCategories = () => {
+  return gamesApi.get("/categories").then((result) => {
     return result.data;
   });
 };
