@@ -13,19 +13,21 @@ export const Reviews = ({
   const [err, setErr] = useState(null);
 
   const filterByCategory = searchParams.get("category");
+  const sortBy = searchParams.get("sort_by");
+  const orderBy = searchParams.get("order_by");
 
   useEffect(() => {
     setErr(null);
-    getReviews(filterByCategory)
+    getReviews(filterByCategory, sortBy, orderBy)
       .then((data) => {
         const reviewsData = data.reviews;
         setReviews(reviewsData);
       })
       .catch((err) => {
         console.log(err);
-        setErr(`${err.response.data.msg} - This category does not exist.`);
+        setErr(`${err.response.data.msg} - Go Back.`);
       });
-  }, [filterByCategory, setReviews]);
+  }, [filterByCategory, setReviews, sortBy, orderBy]);
 
   return err ? (
     <p>{err}</p>
@@ -41,9 +43,9 @@ export const Reviews = ({
       </section>
       <br></br>
       <section>
-        <label htmlFor="category-dropdown">Category </label>
-
         <div>
+          <label htmlFor="category-dropdown">Category </label>
+
           <select
             id="category-dropdown"
             value={!filterByCategory ? "All" : filterByCategory}
@@ -67,6 +69,57 @@ export const Reviews = ({
                 </option>
               );
             })}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="sort-by">Sort By</label>
+          <select
+            id="sort-by"
+            value={sortBy || "default"}
+            onChange={(event) => {
+              const newSortParams = new URLSearchParams(searchParams);
+
+              if (event.target.value === "default") {
+                newSortParams.delete("sort_by");
+              } else {
+                newSortParams.set("sort_by", event.target.value);
+              }
+
+              setSearchParams(newSortParams);
+            }}
+          >
+            <option value="default">Default</option>
+            <option value="title" key="title">
+              Title
+            </option>
+            <option value="created_at" key="time">
+              Time
+            </option>
+            <option value="votes" key="votes">
+              Votes
+            </option>
+            <option value="comment_count" key="comments">
+              Comments
+            </option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="order-by">Order By</label>
+          <select
+            id="order-by"
+            value={orderBy || "DESC"}
+            onChange={(event) => {
+              const newOrderParams = new URLSearchParams(searchParams);
+              newOrderParams.set("order_by", event.target.value);
+              setSearchParams(newOrderParams);
+            }}
+          >
+            <option value="DESC" key="desc">
+              Desc
+            </option>
+            <option value="ASC" key="asc">
+              Asc
+            </option>
           </select>
         </div>
 

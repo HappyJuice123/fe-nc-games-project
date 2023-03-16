@@ -4,11 +4,13 @@ const gamesApi = axios.create({
   baseURL: "https://jasons-backend-games-project.onrender.com/api",
 });
 
-export const getReviews = (category) => {
+export const getReviews = (category, sortBy, orderBy) => {
   return gamesApi
     .get("/reviews", {
       params: {
         category: category,
+        sort_by: sortBy,
+        order: orderBy,
       },
     })
     .then((result) => {
