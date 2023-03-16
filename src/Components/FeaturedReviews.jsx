@@ -13,6 +13,9 @@ export const FeaturedReviews = ({ reviews }) => {
           <Link to="/reviews" className="link-to-page">
             See All Reviews
           </Link>
+          <Link to="/categories" className="link-to-page">
+            See All Categories
+          </Link>
         </section>
 
         <ul className="reviews">

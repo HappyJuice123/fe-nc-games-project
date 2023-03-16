@@ -1,7 +1,7 @@
 import { ReviewCards } from "./ReviewCards";
 import { useEffect, useState } from "react";
 import { getReviews } from "../api";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 
 export const Reviews = ({
   reviews,
@@ -30,6 +30,12 @@ export const Reviews = ({
       <header>
         <h2>Reviews</h2>
       </header>
+      <section>
+        <Link to="/categories" className="link-to-page">
+          See All Categories
+        </Link>
+      </section>
+      <br></br>
       <section>
         <label htmlFor="category-dropdown">Category </label>
 

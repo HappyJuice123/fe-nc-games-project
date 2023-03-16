@@ -130,6 +130,12 @@ Comments
   margin-bottom: -30px;
 }
 
+/* categories */
+
+.category-list {
+  list-style: none;
+}
+
 @media only screen and (max-width: 900px) {
   .review-img {
     width: 90%;
