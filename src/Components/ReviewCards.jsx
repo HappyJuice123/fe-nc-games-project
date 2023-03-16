@@ -19,7 +19,14 @@ export const ReviewCards = ({ reviews, isReviewsLoading }) => {
                   />
                 </Link>{" "}
               </section>
+              <p className="votes">Votes: {review.votes}</p>
               <p className="review-body">{review.review_body}</p>
+              <p className="review-comment-count">
+                {review.comment_count} Comments
+              </p>
+              <p className="review-time">
+                {review.owner} on {review.created_at.substring(0, 10)}
+              </p>
             </li>
           );
         })}
