@@ -1,7 +1,7 @@
 import { ReviewCards } from "./ReviewCards";
 import { useEffect, useState } from "react";
 import { getReviews } from "../api";
-import { Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export const Reviews = ({
   reviews,
@@ -10,9 +10,12 @@ export const Reviews = ({
   setReviews,
 }) => {
   const [category, setCategory] = useState("All");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const filterByCategory = searchParams.get("category");
 
   useEffect(() => {
-    getReviews(category)
+    getReviews(filterByCategory)
       .then((data) => {
         const reviewsData = data.reviews;
         setReviews(reviewsData);
@@ -20,7 +23,7 @@ export const Reviews = ({
       .catch((err) => {
         console.log(err);
       });
-  }, [category, setReviews]);
+  }, [filterByCategory, setReviews]);
 
   return (
     <main>
@@ -30,30 +33,33 @@ export const Reviews = ({
       <section>
         <label htmlFor="category-dropdown">Category </label>
 
-        <Link
-          to={category === "All" ? "/reviews" : `/reviews?category=${category}`}
-        >
-          <div>
-            <select
-              id="category-dropdown"
-              value={category}
-              onChange={(event) => {
-                setCategory(event.target.value);
-              }}
-            >
-              <option key="all" value="All">
-                All
-              </option>
-              {categories.map((category) => {
-                return (
-                  <option key={category.slug} value={category.slug}>
-                    {category.slug[0].toUpperCase() + category.slug.slice(1)}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-        </Link>
+        <div>
+          <select
+            id="category-dropdown"
+            value={category}
+            onChange={(event) => {
+              setCategory(event.target.value);
+              const newSearchParams = new URLSearchParams(searchParams);
+              if (event.target.value !== "All") {
+                newSearchParams.set("category", event.target.value);
+              } else {
+                newSearchParams.delete("category");
+              }
+              setSearchParams(newSearchParams);
+            }}
+          >
+            <option key="all" value="All">
+              All
+            </option>
+            {categories.map((category) => {
+              return (
+                <option key={category.slug} value={category.slug}>
+                  {category.slug[0].toUpperCase() + category.slug.slice(1)}
+                </option>
+              );
+            })}
+          </select>
+        </div>
 
         <ReviewCards reviews={reviews} isReviewsLoading={isReviewsLoading} />
       </section>

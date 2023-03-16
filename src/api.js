@@ -40,6 +40,14 @@ export const patchReview = (review_id, voteUpdate) => {
   });
 };
 
+export const postComment = (review_id, newComment) => {
+  return gamesApi
+    .post(`/reviews/${review_id}/comments`, newComment)
+    .then((result) => {
+      return result.data;
+    });
+};
+
 export const getCategories = () => {
   return gamesApi.get("/categories").then((result) => {
     return result.data;

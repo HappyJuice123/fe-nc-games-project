@@ -37,3 +37,14 @@ export const commentAuthor = (users, comment) => {
     }
   }
 };
+
+export const loggedInUserAvatar = (login, users) => {
+  let avatarUrl = "";
+  if (login) {
+    const loggedInUser = users.find((user) => user.username === login);
+    if (loggedInUser) {
+      return (avatarUrl += loggedInUser.avatar_url);
+    }
+  }
+  return avatarUrl;
+};

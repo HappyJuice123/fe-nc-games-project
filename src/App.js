@@ -12,6 +12,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isReviewsLoading, setIsReviewsLoading] = useState(true);
+  const [login, setLogin] = useState(null);
 
   useEffect(() => {
     setIsReviewsLoading(true);
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header login={login} setLogin={setLogin} />
       <Routes>
         <Route path="/" element={<FeaturedReviews reviews={reviews} />} />
         <Route
@@ -46,6 +47,10 @@ function App() {
         <Route
           path="/categories"
           element={<Categories categories={categories} />}
+        />
+        <Route
+          path="/reviews/:review_id"
+          element={<SingleReview login={login} />}
         />
       </Routes>
     </div>

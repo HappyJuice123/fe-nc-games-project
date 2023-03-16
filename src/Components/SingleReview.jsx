@@ -4,7 +4,7 @@ import { getReviewById } from "../api";
 import { Comments } from "./Comments";
 import { Voting } from "./Voting";
 
-export const SingleReview = () => {
+export const SingleReview = ({ login }) => {
   const { review_id } = useParams();
 
   const [singleReview, setSingleReview] = useState({});
@@ -72,7 +72,11 @@ export const SingleReview = () => {
           {singleReview.comment_count === 0 ? (
             <p>No Comments</p>
           ) : (
-            <Comments review_id={review_id} singleReview={singleReview} />
+            <Comments
+              review_id={review_id}
+              singleReview={singleReview}
+              login={login}
+            />
           )}
         </section>
       </main>
