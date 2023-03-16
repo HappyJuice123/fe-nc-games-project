@@ -9,12 +9,13 @@ export const Reviews = ({
   categories,
   setReviews,
 }) => {
-  const [category, setCategory] = useState("All");
   const [searchParams, setSearchParams] = useSearchParams();
+  const [err, setErr] = useState(null);
 
   const filterByCategory = searchParams.get("category");
 
   useEffect(() => {
+    setErr(null);
     getReviews(filterByCategory)
       .then((data) => {
         const reviewsData = data.reviews;
@@ -22,10 +23,13 @@ export const Reviews = ({
       })
       .catch((err) => {
         console.log(err);
+        setErr(`${err.response.data.msg} - This category does not exist.`);
       });
   }, [filterByCategory, setReviews]);
 
-  return (
+  return err ? (
+    <p>{err}</p>
+  ) : (
     <main>
       <header>
         <h2>Reviews</h2>
@@ -42,9 +46,8 @@ export const Reviews = ({
         <div>
           <select
             id="category-dropdown"
-            value={category}
+            value={!filterByCategory ? "All" : filterByCategory}
             onChange={(event) => {
-              setCategory(event.target.value);
               const newSearchParams = new URLSearchParams(searchParams);
               if (event.target.value !== "All") {
                 newSearchParams.set("category", event.target.value);
