@@ -20,6 +20,7 @@ export const SingleReview = ({ login }) => {
         setIsLoading(false);
       })
       .catch(() => {
+        setIsLoading(false);
         setReviewExists(false);
       });
   }, [review_id]);

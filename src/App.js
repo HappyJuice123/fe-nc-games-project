@@ -21,6 +21,7 @@ function App() {
       const reviewsData = data.reviews;
       setReviews(reviewsData);
     });
+
     getCategories().then((data) => {
       const categoryData = data.categories;
       setCategories(categoryData);
@@ -50,6 +51,10 @@ function App() {
         <Route
           path="/reviews/:review_id"
           element={<SingleReview login={login} />}
+        />
+        <Route
+          path="/*"
+          element={<p>Error 404 - this page does not exist.</p>}
         />
       </Routes>
     </div>
