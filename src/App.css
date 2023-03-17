@@ -32,16 +32,28 @@ h1 {
   text-align: right;
   margin-right: 20px;
   margin-top: -40px;
+  display: inline;
 }
 
 .login-text {
   font-size: 0.7rem;
   margin-right: 80px;
-  margin-top: 20px;
+  margin-top: -50px;
 }
 
 .login-button {
   margin-top: -35px;
+}
+
+.img-cropper {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 150px;
+  top: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  float: right;
 }
 
 h2 {
@@ -99,7 +111,7 @@ button:hover {
 }
 
 .link-to-page {
-  padding: 30px;
+  padding: 25px;
   color: black;
   text-decoration: none;
 }
@@ -133,7 +145,7 @@ Comments
 #comment-title {
   padding-top: 20px;
   text-align: left;
-  margin-left: 40px;
+  margin-left: 0px;
   margin-bottom: -30px;
 }
 
@@ -141,9 +153,26 @@ Comments
 
 .category-list {
   list-style: none;
+  margin: 0px;
+  padding: 0px;
 }
 
 @media only screen and (max-width: 900px) {
+  .login-text {
+    margin-top: -50px;
+    margin-right: 10px;
+  }
+
+  .img-cropper {
+    margin-right: 0px;
+    top: 20px;
+    right: 10px;
+  }
+
+  .login-button {
+    margin-top: 10px;
+  }
+
   .review-img {
     width: 90%;
   }
@@ -237,6 +266,7 @@ Comments
     width: 2rem;
     height: auto;
     margin-right: 10px;
+    float: right;
   }
 
   .comments-area {
@@ -264,6 +294,21 @@ Comments
     font-size: 0.8rem;
   }
 
+  .no-comments {
+    font-size: 0.7rem;
+    margin-left: 10px;
+    padding: 10px;
+  }
+
+  .comment-box {
+    padding-top: 40px;
+  }
+
+  #post-comment {
+    width: 90%;
+    padding-bottom: 40px;
+  }
+
   #category-dropdown {
     margin: 5px;
     width: 150px;
@@ -281,6 +326,21 @@ Comments
     width: 150px;
     background-color: #9f9990;
   }
+
+  .category-card {
+    display: block;
+    border: 1.5px solid black;
+    background-color: #858178;
+    padding: 20px 30px;
+    border-radius: 50px;
+    margin: auto;
+    margin: 10px 20px;
+    width: auto;
+    height: auto;
+    margin-right: 40px;
+    margin-left: 40px;
+    flex-grow: 1;
+  }
 }
 
 @media only screen and (min-width: 900px) {
@@ -290,6 +350,10 @@ Comments
   .reviews {
     margin-right: 10%;
     margin-left: 10%;
+  }
+
+  .review-title {
+    font-size: 2rem;
   }
 
   .review-card {
@@ -305,6 +369,7 @@ Comments
     margin-right: 40px;
     margin-left: 40px;
     flex-grow: 1;
+    padding-bottom: 100px;
   }
   .single-review {
     display: grid;
@@ -313,6 +378,12 @@ Comments
       "img img img img img text text"
       ". comments comments comments comments comments .";
     margin: 20px;
+  }
+
+  .review-body {
+    font-size: 1.2rem;
+    padding: 10px 50px;
+    padding-bottom: 40px;
   }
 
   .link-to-reviews {
@@ -342,6 +413,10 @@ Comments
     margin-bottom: 50px;
   }
 
+  #single-review__comments-area {
+    padding: 0px;
+  }
+
   .comments-section {
     text-align: left;
   }
@@ -350,11 +425,20 @@ Comments
     margin: 0px 40px;
   }
 
+  .comment-box {
+    text-align: left;
+    margin: 15px 40px;
+  }
+
+  #post-comment {
+    width: 100%;
+  }
+
   #single-review__img {
     border: 2px solid black;
     width: 500rem;
     height: auto;
-    max-width: 100%;
+    max-width: 80%;
     border-radius: 80px;
   }
 
@@ -378,9 +462,10 @@ Comments
   }
 
   .avatar-img {
-    height: 2rem;
     margin-right: 5px;
-    border-radius: 50%;
+    display: inline;
+    height: 200%;
+    width: auto;
   }
 
   .comments-section {
@@ -399,58 +484,6 @@ Comments
 
   .comments-area {
     padding: 20px;
-  }
-}
-
-/* higher breakpoint */
-
-@media only screen and (min-width: 900px) {
-  .single-review {
-    display: grid;
-    grid-template-areas:
-      "link link link link link link link"
-      "img img img img img text text"
-      ". comments comments comments comments comments .";
-    margin: 20px;
-  }
-
-  .review-title {
-    font-size: 2rem;
-  }
-  .review-card {
-    padding-bottom: 100px;
-  }
-
-  .review-body {
-    font-size: 1.2rem;
-    padding: 10px 50px;
-    padding-bottom: 40px;
-  }
-
-  .link-to-reviews {
-    grid-area: link;
-  }
-
-  .single-review__img-section {
-    padding: 20px;
-    grid-area: img;
-    margin-bottom: 50px;
-  }
-
-  .comments {
-    grid-area: comments;
-  }
-
-  .single-review__text-section {
-    grid-area: text;
-    text-align: justify;
-    padding: 50px 50px;
-    margin-left: 10px;
-    border-radius: 80px;
-    height: auto;
-    max-width: 100%;
-    background-color: #858178;
-    margin-bottom: 50px;
   }
 
   .dropdown {
@@ -473,5 +506,35 @@ Comments
     margin: 10px;
     width: 150px;
     background-color: #9f9990;
+  }
+
+  .category-card {
+    background-color: #858178;
+    border-radius: 50px;
+    padding: 30px;
+    margin: 30px;
+    width: 80%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 1;
+    padding-bottom: 100px;
+  }
+}
+
+@media only screen and (min-width: 2200px) {
+  #single-review__img {
+    width: 1300px;
+  }
+
+  .single-review__text-section {
+    border: 2px solid red;
+    width: 800px;
+    margin-right: 10%;
+    margin-left: 0px;
+  }
+
+  .category-card {
+    width: 1820px;
   }
 }

@@ -11,7 +11,7 @@ export const Categories = ({ categories }) => {
         <ul className="category-list">
           {categories.map((category) => {
             return (
-              <li key={category.slug} className="review-card">
+              <li key={category.slug} className="category-card">
                 <h3>
                   <Link
                     to={`/reviews?category=${category.slug}`}

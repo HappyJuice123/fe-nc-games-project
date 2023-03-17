@@ -27,7 +27,7 @@ export const Comments = ({ review_id, singleReview, login }) => {
   return !isCommentsLoading ? (
     <section className="comments-area">
       {+singleReview.comment_count === 0 ? (
-        <section>
+        <section className="no-comments">
           <CommentAdder
             review_id={review_id}
             login={login}
@@ -37,7 +37,7 @@ export const Comments = ({ review_id, singleReview, login }) => {
           No Comments
         </section>
       ) : (
-        <section className="comments-area">
+        <section className="comments-area" id="single-review__comments-area">
           <p id="comment-title">Comments</p>
           <CommentAdder
             review_id={review_id}

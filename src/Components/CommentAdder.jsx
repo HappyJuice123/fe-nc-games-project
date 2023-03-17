@@ -45,18 +45,19 @@ export const CommentAdder = ({ review_id, login, setComments }) => {
   };
 
   return (
-    <section>
+    <section className="comment-box">
       <form onSubmit={handleSubmit}>
         <label htmlFor="post-comment">Post a Comment</label>
         <br></br>
-        <input
+        <textarea
           type="text"
           onChange={(event) => {
             setNewComment(event.target.value);
           }}
           value={newComment}
           id="post-comment"
-        ></input>
+        ></textarea>
+        <br></br>
         <button type="submit">Post</button>
       </form>
       <section>{isPosting ? <p>Posting comment...</p> : null}</section>

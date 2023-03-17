@@ -24,11 +24,13 @@ export const Login = ({ login, setLogin }) => {
       {login ? (
         <p className="login-text">
           {login}
-          <img
-            src={loggedInUserAvatar(login, users)}
-            alt={login}
-            className="avatar-img"
-          />
+          <div className="img-cropper">
+            <img
+              src={loggedInUserAvatar(login, users)}
+              alt={login}
+              className="avatar-img"
+            />
+          </div>
         </p>
       ) : (
         <p className="login-text">Not signed in</p>
