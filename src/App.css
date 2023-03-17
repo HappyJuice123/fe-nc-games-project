@@ -37,12 +37,14 @@ h1 {
 
 .login-text {
   font-size: 0.7rem;
-  margin-right: 80px;
+  margin-right: 85px;
   margin-top: -50px;
+  font-weight: bolder;
 }
 
 .login-button {
   margin-top: -35px;
+  margin-right: 10px;
 }
 
 .img-cropper {
@@ -142,11 +144,35 @@ Comments
   list-style: none;
 }
 
+.comment-body {
+  font-size: 0.9rem;
+}
+
 #comment-title {
   padding-top: 20px;
   text-align: left;
   margin-left: 0px;
   margin-bottom: -30px;
+}
+
+.comment-avatar-img-container {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.comment-avatar-img {
+  width: 2rem;
+  height: auto;
+  margin-right: 10px;
+  float: left;
+}
+
+.comment-author {
+  margin-top: -25px;
+  margin-left: 40px;
 }
 
 /* categories */

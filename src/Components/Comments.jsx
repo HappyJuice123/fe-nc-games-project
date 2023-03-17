@@ -49,12 +49,14 @@ export const Comments = ({ review_id, singleReview, login }) => {
               return (
                 <li key={comment.comment_id} className="comments-section">
                   <section className="comment-avatar">
-                    <p className="comment-author">
+                    <div className="comment-avatar-img-container">
                       <img
                         src={avatarUrl(users, comment)}
                         alt={`${comment.author} avatar`}
-                        className="avatar-img"
+                        className="comment-avatar-img"
                       />
+                    </div>
+                    <p className="comment-author">
                       {commentAuthor(users, comment)}
                     </p>
                   </section>
