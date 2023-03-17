@@ -6,9 +6,7 @@ export const Categories = ({ categories }) => {
       <header>
         <h2>Categories</h2>
       </header>
-      <Link to="/reviews" className="link-to-page">
-        See All Reviews
-      </Link>
+
       <main>
         <ul className="category-list">
           {categories.map((category) => {

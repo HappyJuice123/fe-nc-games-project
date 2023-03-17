@@ -7,7 +7,7 @@
 
 h1 {
   font-size: 1.5rem;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   border-bottom: 6px ridge #0f1b07;
   text-decoration: none;
 }
@@ -20,6 +20,12 @@ h1 {
 
 .header:hover {
   color: rgb(104, 114, 124);
+}
+
+.nav-bar {
+  font-size: 1.5rem;
+  border-bottom: 6px ridge #0f1b07;
+  padding-bottom: 10px;
 }
 
 .login {
@@ -44,7 +50,7 @@ h2 {
 }
 
 button {
-  border-radius: 30%;
+  border-radius: 10%;
   background-color: white;
   color: #0f1b07;
 }
@@ -95,6 +101,7 @@ button:hover {
 .link-to-page {
   padding: 30px;
   color: black;
+  text-decoration: none;
 }
 
 .link-to-page:hover {
@@ -256,6 +263,24 @@ Comments
     margin-top: -10px;
     font-size: 0.8rem;
   }
+
+  #category-dropdown {
+    margin: 5px;
+    width: 150px;
+    background-color: #9f9990;
+  }
+
+  #sort-by {
+    margin: 5px;
+    width: 150px;
+    background-color: #9f9990;
+  }
+
+  #order-by {
+    margin: 5px;
+    width: 150px;
+    background-color: #9f9990;
+  }
 }
 
 @media only screen and (min-width: 900px) {
@@ -273,6 +298,7 @@ Comments
     padding: 30px;
     margin: 30px;
     width: auto;
+    min-height: 600px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -425,5 +451,27 @@ Comments
     max-width: 100%;
     background-color: #858178;
     margin-bottom: 50px;
+  }
+
+  .dropdown {
+    display: inline-block;
+  }
+
+  #category-dropdown {
+    margin: 10px;
+    width: 150px;
+    background-color: #9f9990;
+  }
+
+  #sort-by {
+    margin: 10px;
+    width: 150px;
+    background-color: #9f9990;
+  }
+
+  #order-by {
+    margin: 10px;
+    width: 150px;
+    background-color: #9f9990;
   }
 }

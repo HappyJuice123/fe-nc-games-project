@@ -9,15 +9,6 @@ export const FeaturedReviews = ({ reviews }) => {
         <h2>Featured Reviews</h2>
       </header>
       <main>
-        <section>
-          <Link to="/reviews" className="link-to-page">
-            See All Reviews
-          </Link>
-          <Link to="/categories" className="link-to-page">
-            See All Categories
-          </Link>
-        </section>
-
         <ul className="reviews">
           {indexArr.map((index) => {
             return (
@@ -46,11 +37,6 @@ export const FeaturedReviews = ({ reviews }) => {
           })}
         </ul>
       </main>
-      <section>
-        <Link to="/reviews" className="link-to-page">
-          See All Reviews
-        </Link>
-      </section>
     </section>
   ) : (
     <p></p>

@@ -7,6 +7,7 @@ import { getReviews, getCategories } from "./api";
 import { FeaturedReviews } from "./Components/FeaturedReviews";
 import { SingleReview } from "./Components/SingleReview";
 import { Categories } from "./Components/Categories";
+import { NavBar } from "./Components/NavBar";
 
 function App() {
   const [reviews, setReviews] = useState([]);
@@ -30,6 +31,7 @@ function App() {
   return (
     <div className="App">
       <Header login={login} setLogin={setLogin} />
+      <NavBar />
       <Routes>
         <Route path="/" element={<FeaturedReviews reviews={reviews} />} />
         <Route
