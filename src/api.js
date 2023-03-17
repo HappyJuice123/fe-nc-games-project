@@ -55,3 +55,9 @@ export const getCategories = () => {
     return result.data;
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return gamesApi.delete(`/comments/${comment_id}`).then((result) => {
+    return result.data;
+  });
+};
