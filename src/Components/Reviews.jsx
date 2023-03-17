@@ -1,7 +1,7 @@
 import { ReviewCards } from "./ReviewCards";
 import { useEffect, useState } from "react";
 import { getReviews } from "../api";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export const Reviews = ({
   reviews,
@@ -37,13 +37,7 @@ export const Reviews = ({
         <h2>Reviews</h2>
       </header>
       <section>
-        <Link to="/categories" className="link-to-page">
-          See All Categories
-        </Link>
-      </section>
-      <br></br>
-      <section>
-        <div>
+        <div className="dropdown">
           <label htmlFor="category-dropdown">Category </label>
 
           <select
@@ -71,7 +65,7 @@ export const Reviews = ({
             })}
           </select>
         </div>
-        <div>
+        <div className="dropdown">
           <label htmlFor="sort-by">Sort By</label>
           <select
             id="sort-by"
@@ -103,7 +97,7 @@ export const Reviews = ({
             </option>
           </select>
         </div>
-        <div>
+        <div className="dropdown">
           <label htmlFor="order-by">Order By</label>
           <select
             id="order-by"
