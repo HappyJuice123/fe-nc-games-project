@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export const CommentDeleter = ({ login, comment, setComments }) => {
   const [isDeleting, setIsDeleting] = useState(false);
-  const [hasCommentBeenDeleted, setHasCommentBeenDeleted] = useState(null);
+
   const [err, setErr] = useState(null);
 
   const { comment_id, author } = comment;
@@ -12,11 +12,8 @@ export const CommentDeleter = ({ login, comment, setComments }) => {
     setErr(null);
   }, [login]);
 
-  console.log(hasCommentBeenDeleted);
-
   const handleDelete = () => {
     if (author === login) {
-      setHasCommentBeenDeleted(null);
       setErr(null);
       setIsDeleting(true);
       deleteComment(comment_id)
@@ -55,7 +52,6 @@ export const CommentDeleter = ({ login, comment, setComments }) => {
       </button>
       {isDeleting ? <p>Deleting Comment...</p> : null}
       {err ? <p>{err}</p> : null}
-      {hasCommentBeenDeleted ? <p>{hasCommentBeenDeleted}</p> : null}
     </section>
   ) : null;
 };
