@@ -43,7 +43,6 @@ function App() {
             />
           }
         />
-        <Route path="/reviews/:review_id" element={<SingleReview />} />
         <Route
           path="/categories"
           element={<Categories categories={categories} />}

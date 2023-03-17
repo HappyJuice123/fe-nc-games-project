@@ -3,6 +3,7 @@ import { getCommentsByReviewId, getUsers } from "../api";
 
 import { avatarUrl, commentAuthor } from "../utils";
 import { CommentAdder } from "./CommentAdder";
+import { CommentDeleter } from "./CommentDeleter";
 
 export const Comments = ({ review_id, singleReview, login }) => {
   const [comments, setComments] = useState([]);
@@ -63,6 +64,13 @@ export const Comments = ({ review_id, singleReview, login }) => {
                     <p className="comment-time">
                       {comment.author} on {comment.created_at.substring(0, 10)}
                     </p>
+                  </section>
+                  <section>
+                    <CommentDeleter
+                      login={login}
+                      comment={comment}
+                      setComments={setComments}
+                    />
                   </section>
                 </li>
               );
